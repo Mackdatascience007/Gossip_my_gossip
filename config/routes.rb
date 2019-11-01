@@ -10,8 +10,12 @@ Rails.application.routes.draw do
   get '/signup', to: 'users#new'
   post '/users', to: 'users#create'
 
-  post '/login', to: 'sessions#create'
-  #get '/login', to: 'sessions#destroy'
+# log in page with form:
+get '/login'     => 'sessions#new'
+# create (post) action for when log in form is submitted:
+post '/login'    => 'sessions#create'
+# delete action to log out:
+delete '/logout' => 'sessions#destroy'  
 
   resources :gossips
   resources :users

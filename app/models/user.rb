@@ -1,9 +1,9 @@
 class User < ApplicationRecord
+	
+	has_secure_password
 
-  has_secure_password
-
-  validates :password, presence: true, length: { minimum: 6 }
-  validates :first_name, presence: true
+	# Verify that email field is not blank and that it doesn't already exist in the db (prevents duplicates):
+	validates :email, presence: true, uniqueness: true
   
   belongs_to :city, optional: true
   # 1-N association with gossips table
